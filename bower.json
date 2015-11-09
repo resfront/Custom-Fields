@@ -1,0 +1,21 @@
+{
+  "name": "agola-assets",
+  "version": "1.0.0",
+  "description": "Agola Custom Fields",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "vendor/bower_dl",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "jquery-ui": "1.11.4",
+    "semantic": "~2.1.6",
+    "angular": "~1.4.7",
+    "angular-route": "",
+    "angular-ui-sortable": "",
+    "v-accordion": ""
+  }
+}
