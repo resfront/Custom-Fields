@@ -1,10 +1,13 @@
 # Agola Custom Fields
 This package is intended for my web application called "Agola Platform" (based on <a href="http://www.laravel.com" target="_blank">Laravel Framework</a>) and it constitutes its main content management and content type management functionality. This repository based on <a href="https://github.com/Selmanh/angularjs-form-builder">angularjs-form-builder</a>
 
-##### Installation for Assets
+###### Installation
 ```json
 bower update
 ```
+----------
+<img src="https://raw.githubusercontent.com/AgolaPlatform/Custom-Fields/master/screenshot.png" />
+----------
 ##### Features ;
 * Drag and drop sorting of field rows
 * JSON supported
