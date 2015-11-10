@@ -73,13 +73,13 @@ body {
     margin-top: 10px;
     padding-left: 0; 
 }
-.custom_fields .vAccordion--default v-pane-header {
+.custom_fields .vAccordion--default .option_accordions v-pane-header {
     background: transparent !important;
 }
-.custom_fields .option_accordions v-pane-header {
+.custom_fields .vAccordion--default .option_accordions v-pane-header {
     margin-bottom: 5px!important;
 }
-.custom_fields .option_accordions v-pane-content>div {
+.custom_fields .vAccordion--default .option_accordions v-pane-content>div {
     padding-bottom: 15px!important;
 }
 .reset {
