@@ -1,0 +1,42 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Agola Custom Fields</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/vendor/semantic/dist/semantic.min.css">
+    <link rel="stylesheet" href="assets/vendor/v-accordion/dist/v-accordion.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+    <script src="assets/vendor/angular/angular.min.js"></script>
+    <script src="assets/vendor/angular-route/angular-route.min.js"></script>
+    <script src="assets/vendor/angular-ui-sortable/sortable.min.js"></script>
+    <script src="assets/vendor/v-accordion/dist/v-accordion.min.js"></script>
+    <script src="assets/vendor/semantic/dist/semantic.min.js"></script>
+</head>
+<body ng-app="customFieldsApp">
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div class="ui grid container agola">
+    <div class="row">
+        <div class="column">
+            <form class="ui form">
+                <div ng-view="" ng-controller="CustomFieldsController"></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="assets/js/app.js"></script>
+<script src="assets/js/controllers/CustomFieldsController.js"></script>
+<script src="assets/js/services/FormService.js"></script>
+<script src="assets/js/agola.js"></script>
+</body>
+</html>
