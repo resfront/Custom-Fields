@@ -1,0 +1,88 @@
+body {
+    background: #e5eced;
+    font-size: 13px;
+    font-family: Calibri,Trebuchet,sans-serif;
+    color: #888;
+}
+.agola {
+    margin-top: 4px !important;
+    padding-bottom: 200px !important;
+}
+.agola_header {
+    margin-bottom: -15px;
+}
+.custom_fields .ui.menu .item {
+    color: #aaa;
+    font-size: 13px;
+}
+.custom_fields .vAccordion--default {
+    margin-top: 0; 
+    border: 0; 
+    border-radius: 0
+}
+.custom_fields .ui.vertical.menu .item>i.icon {
+    float: left;
+    margin: 0 .9em 0 0;
+    font-size: 16px;
+}
+.custom_fields .form_types {
+    float: right;
+    margin-right: 30px;
+}
+.custom_fields .vAccordion--default v-pane-content>div {
+    padding-bottom: 0!important;
+    -webkit-transform: none!important;
+    transform: none!important;
+}
+.custom_fields .vAccordion--default v-pane-header {
+    padding: 10px 0!important;
+    margin-bottom: -1px!important;
+    border-top: 1px solid #F7F7F7!important;
+    border-bottom: 2px solid #DADADA!important;
+    background: #F0F0F0;
+}
+.custom_fields .vAccordion--default .segment {
+    border-radius: 0;
+    border: 0;
+}
+.custom_fields .vAccordion--default v-pane-header>div {
+    padding: 0 8px;
+}
+.custom_fields .vAccordion--default v-pane-header::after, 
+.custom_fields .vAccordion--default v-pane-header::before {
+    right: 10px!important;
+}
+.custom_fields .ui.form .field>label {
+    color: rgba(0,0,0,.67);
+}
+.custom_fields .ui.form .grouped.fields .field, 
+.custom_fields .ui.form .grouped.inline.fields .field {
+    margin: .5em 15px;
+}
+.custom_fields .ui.slider.checkbox .box, 
+.custom_fields .ui.slider.checkbox label,
+.custom_fields .ui.toggle.checkbox .box, 
+.custom_fields .ui.toggle.checkbox label {
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.custom_fields .vAccordion--default v-accordion {
+    margin-top: 10px;
+    padding-left: 0; 
+}
+.custom_fields .vAccordion--default v-pane-header {
+    background: transparent !important;
+}
+.custom_fields .option_accordions v-pane-header {
+    margin-bottom: 5px!important;
+}
+.custom_fields .option_accordions v-pane-content>div {
+    padding-bottom: 15px!important;
+}
+.reset {
+    padding: 0;
+    margin: 0;
+}

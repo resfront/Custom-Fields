@@ -1,0 +1,292 @@
+<div class="ui grid custom_fields">
+
+    <!-- Header -->
+    <div class="one wide column agola_header reset">
+        <div class="ui vertical icon menu">
+            <a href="https://github.com/AgolaPlatform" target="_blank" class="active item agola_tooltip" data-content="Github Repository" data-position="right center" data-title="Agola Custom Fields">
+                <img class="ui mini image" src="assets/images/agola.png">
+            </a>
+            <a class="item agola_tooltip" ng-show="!showJson" ng-click="showJson = true" data-content="Show Json" data-position="right center">
+                <i class="zoom icon"></i>
+            </a>
+            <a class="item agola_tooltip" ng-show="showJson" ng-click="showJson = false" data-content="Hide Json" data-position="right center">
+                <i class="zoom out icon"></i>
+            </a>
+            <a class="item agola_tooltip" ng-click="reset()" data-content="Reset All" data-position="right center">
+                <i class="trash outline icon"></i>
+            </a>
+            <a class="item agola_tooltip" data-content="Save Button" data-position="right center">
+                <i class="save icon"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Left side -->
+    <div class="three wide column">
+        <div class="ui attached vertical pointing inverted menu">
+            <span class="header active item">Field Types</span>
+            <a ng-model="addField.new" ng-repeat="type in addField.types" class="item fields_buttons" ng-click="addFieldButton(type.name)">
+                <i class="{{ type.icon }}"></i>
+                {{ type.label }}
+                <div class="ui blue label" ng-show="countFields(type.name) > 0">
+                    {{ countFields(type.name) }}
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Middle side -->
+    <div class="nine wide column">
+
+        <div class="column">
+
+            <div ng-show="showJson" class="row ui segment">
+                <pre>{{ form | json }}</pre>
+            </div>
+
+            <div ng-show="form.form_fields.length == 0">
+                <div class="ui negative small message">
+                    <div class="content">
+                        <div class="header">
+                            No fields added yet.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <v-accordion class="vAccordion--default ui raised segments" style="margin-top: 0; border: 0; border-radius: 0">
+                <div ui-sortable="sortableOptions" ng-model="form.form_fields">
+                    <v-pane ng-repeat="field in form.form_fields">
+
+                        <v-pane-header class="handle">
+                            <i class="ellipsis vertical icon" style="cursor:move"></i> {{ field.field_title }}
+                            <div class="form_types">
+                                <span class="label">
+                                    {{ field.field_type }}
+                                </span>
+                            </div>
+                        </v-pane-header>
+
+                        <v-pane-content>
+
+                            <div class="ui segment">
+                                <div style="display: none;">
+                                    <span>Field ID:</span>
+                                    <span>{{field.field_id}}</span>
+                                </div>
+
+                                <!-- Title & Key -->
+                                <div class="two fields">
+                                    <div class="field">
+                                        <label>Title</label>
+                                        <input type="text" ng-model="field.field_title" placeholder="Title..."><br>
+                                        <small>Lorem ipsum dolor sit amet, oblique intellegat his id</small>
+                                    </div>
+
+                                    <div class="field">
+                                        <label>Input Name</label>
+                                        <div class="ui corner labeled input agola_tooltip">
+                                            <input type="text" ng-model="field.field_name" placeholder="Input name...">
+                                            <div class="ui corner blue label">
+                                                <i class="asterisk icon"></i>
+                                            </div>
+                                        </div>
+                                        <small>Duo in scripta adversarium, vide paulo maiestatis at his</small>
+                                    </div>
+                                </div>
+
+                                <!-- Required & Helper Text -->
+                                <div class="two fields">
+                                    <div class="field">
+                                        <label>Default Value</label>
+                                        <input type="text" ng-model="field.field_value" value="{{ field.field_value }}" class="form-control input-sm" placeholder="Default Value">
+                                        <small>Purto semper veritus et eum, meis indoctum qui at</small>
+                                    </div>
+                                    <div class="field">
+                                        <label>Placeholder</label>
+                                        <input type="text" ng-model="field.field_placeholder" placeholder="Placeholder...">
+                                        <small>An wisi consequat nam, vix iusto ludus perfecto at</small>
+                                    </div>
+                                </div>
+
+                                <!-- Placeholder & Default Value -->
+                                <div class="two fields" ng-show="!showAddOptions(field) && !numberOptions(field) && !rangeOptions(field)">
+                                    <div class="field">
+                                        <label>Helper Text</label>
+                                        <textarea ng-model="field.field_description" value="{{field.field_description}}" rows="3"></textarea>
+                                        <small>Error facilis an eum, his tollit iisque an</small>
+                                    </div>
+                                    <div class="grouped fields">
+                                        <label>Fields Settings</label>
+                                        <div class="field">
+                                            <div class="ui slider checkbox">
+                                                <input type="checkbox" ng-model="field.field_required" id="form-required-{{field.field_id}}"/>
+                                                <label for="form-required-{{field.field_id}}">This field is required ?</label>
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <div class="ui slider checkbox">
+                                                <input type="checkbox" ng-model="field.field_disabled" id="form-disabled-{{field.field_id}}">
+                                                <label for="form-disabled-{{field.field_id}}">Is this disable ?</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Field Options -->
+                                <div class="column" ng-show="showAddOptions(field)">
+                                    <v-accordion class="option_accordions">
+                                        <v-pane>
+                                            <v-pane-header>
+                                                Field Options
+                                            </v-pane-header>
+                                            <v-pane-content>
+                                                <div class="two fields" ng-repeat="option in field.field_options">
+                                                    <div class="fourteen wide field">
+                                                        <input type="text" ng-model="option.option_title" value="{{option.option_title}}">
+                                                    </div>
+                                                    <div class="two wide field">
+                                                        <button class="ui tiny basic red button" type="button" ng-click="deleteOption(field, option)">
+                                                            <i class="remove icon"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <button class="ui tiny basic green button" type="button" ng-click="addOption(field)">
+                                                    <i class="plus icon"></i> Add Option
+                                                </button>
+                                            </v-pane-content>
+                                        </v-pane>
+                                    </v-accordion>
+                                </div>
+
+                                <!-- Range -->
+                                <div ng-show="rangeOptions(field)" class="two fields">
+                                    <div class="field">
+                                        <label><i class="ui caret up orange icon"></i> Max</label>
+                                        <input type="text" ng-model="field.field_max_value" value="{{ field.field_max_value }}" placeholder="maximum">
+                                        <small>Lorem ipsum dolor sit amet, oblique intellegat his id</small>
+                                    </div>
+
+                                    <div class="field">
+                                        <label><i class="ui caret down olive icon"></i> Min</label>
+                                        <input type="text" ng-model="field.field_min_value" value="{{ field.field_min_value }}" placeholder="Minimum">
+                                        <small>Quo aperiri forensibus assueverit id, oratio aeterno ex ius</small>
+                                    </div>
+                                </div>
+
+                                <!-- Number -->
+                                <div ng-show="numberOptions(field)" class="three fields">
+                                    <div class="field">
+                                        <label><i class="ui caret up orange icon"></i> Max</label>
+                                        <input type="text" ng-model="field.field_max_value" value="{{ field.field_max_value }}" placeholder="Maximum">
+                                        <small>At ius fabulas epicurei accusata, nam viderer postulant id</small>
+                                    </div>
+
+                                    <div class="field">
+                                        <label><i class="ui caret down olive icon"></i> Min</label>
+                                        <input type="text" ng-model="field.field_min_value" value="{{ field.field_min_value }}" placeholder="Minimum">
+                                        <small>Ex ignota graeco est. Sit facer quando efficiendi cu</small>
+                                    </div>
+
+                                    <div class="field">
+                                        <label><i class="ui sort blue icon"></i> Step</label>
+                                        <input type="text" ng-model="field.field_step_value" value="{{ field.field_step_value }}">
+                                        <small>Nam veri autem ne, ut sale inermis facilis per</small>
+                                    </div>
+                                </div>
+
+                                <!-- Submit Buton -->
+                                <div class="column" style="margin-top: 15px;">
+                                    <button class="ui tiny red button" type="button" ng-click="deleteField(field.field_id)">
+                                        Remove
+                                    </button>
+                                </div>
+
+                            </div>
+
+                        </v-pane-content>
+
+                    </v-pane>
+                </div>
+            </v-accordion>
+
+        </div>
+    </div>
+
+    <!-- Right side -->
+    <div class="three wide column">
+
+        <div class="ui segment">
+
+            <h4 class="ui dividing header">
+                True / False Options
+                <div class="sub header">Lorem ipsum dolor sit amet, no mea nibh.</div>
+            </h4>
+
+            <div class="field">
+                <div class="ui toggle checkbox">
+                    <input type="checkbox" ng-model="form.form_modules.gallery" id="form-gallery"/>
+                    <label for="form-gallery">Photo Gallery</label>
+                </div>
+            </div>
+
+            <div class="ui divider"></div>
+
+            <div class="field">
+                <div class="ui toggle checkbox">
+                    <input type="checkbox" ng-model="form.form_modules.file" id="form-file"/>
+                    <label for="form-file">File Upload</label>
+                </div>
+            </div>
+
+            <div class="ui divider"></div>
+
+            <div class="field">
+                <div class="ui toggle checkbox">
+                    <input type="checkbox" ng-model="form.form_modules.googlemap" id="form-googlemap"/>
+                    <label for="form-googlemap">Google Map</label>
+                </div>
+            </div>
+
+            <div class="ui divider"></div>
+
+            <div class="field">
+                <div class="ui toggle checkbox">
+                    <input type="checkbox" ng-model="form.form_modules.youtube" id="form-youtube"/>
+                    <label for="form-youtube">Youtube</label>
+                </div>
+            </div>
+
+            <div class="ui divider"></div>
+
+            <div class="field">
+                <div class="ui toggle checkbox">
+                    <input type="checkbox" ng-model="form.form_modules.vimeo" id="form-vimeo"/>
+                    <label for="form-vimeo">Vimeo</label>
+                </div>
+            </div>
+
+            <div class="ui divider"></div>
+
+            <div class="field">
+                <div class="ui toggle checkbox">
+                    <input type="checkbox" ng-model="form.form_modules.instagram" id="form-instagram"/>
+                    <label for="form-instagram">Instagram</label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Hidden JSON Input -->
+    <input name="fields" value="{{ form | json }}" type="hidden"/>
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        // Semantic UI Popup
+        $('.agola_tooltip').popup();
+    });
+</script>
+
