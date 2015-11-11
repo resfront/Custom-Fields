@@ -1,6 +1,6 @@
 <div class="ui grid custom_fields">
 
-    <!-- Header -->
+    <!-- Left side menu group -->
     <div class="one wide column agola_header reset">
         <div class="ui vertical icon menu">
             <a href="https://github.com/AgolaPlatform" target="_blank" class="active item agola_tooltip" data-content="Github Repository" data-position="right center" data-title="Agola Custom Fields">
@@ -23,7 +23,7 @@
 
     <!-- Left side -->
     <div class="three wide column">
-        <div class="ui attached vertical pointing inverted menu">
+        <div class="ui attached vertical pointing inverted agola menu">
             <span class="header active item">Field Types</span>
             <a ng-model="addField.new" ng-repeat="type in addField.types" class="item fields_buttons" ng-click="addFieldButton(type.name)">
                 <i class="{{ type.icon }}"></i>
