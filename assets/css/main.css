@@ -3,16 +3,13 @@ body {
     font-size: 13px;
     font-family: Calibri,Trebuchet,sans-serif;
     color: #888;
-}
-.agola {
     margin-top: 4px !important;
-    padding-bottom: 200px !important;
 }
 .agola_header {
     margin-bottom: -15px;
 }
-.custom_fields .ui.menu .item {
-    color: #aaa;
+.custom_fields .ui.inverted.agola.menu .item {
+    color: #d4d4d4;
     font-size: 13px;
 }
 .custom_fields .vAccordion--default {
@@ -81,6 +78,13 @@ body {
 }
 .custom_fields .vAccordion--default .option_accordions v-pane-content>div {
     padding-bottom: 15px!important;
+}
+.custom_fields .ui.inverted.agola.menu, 
+.custom_fields .ui.inverted.menu .agola.active.item {
+    background-color: #3f414e;
+}
+.custom_fields .ui.inverted.pointing.menu .active.item:after {
+    background: #5C5D68!important;
 }
 .reset {
     padding: 0;
