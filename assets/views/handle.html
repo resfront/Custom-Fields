@@ -28,7 +28,7 @@
             <a ng-model="addField.new" ng-repeat="type in addField.types" class="item fields_buttons" ng-click="addFieldButton(type.name)">
                 <i class="{{ type.icon }}"></i>
                 {{ type.label }}
-                <div class="ui blue label" ng-show="countFields(type.name) > 0">
+                <div class="ui agola label" ng-show="countFields(type.name) > 0">
                     {{ countFields(type.name) }}
                 </div>
             </a>
